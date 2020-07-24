@@ -241,6 +241,73 @@ class offer291 {
         return print;
     }
 }
+
+class offer241 {
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
+    public ListNode reverseList(ListNode head) {
+        if(head==null||head.next==null){return head;}
+
+        ListNode cur=reverseList(head.next);
+        head.next.next=head;
+        head.next=null;
+
+        return cur;
+    }
+}
+
+class offer242 {
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
+    public ListNode reverseList(ListNode head) {
+        ListNode pre=null;
+        ListNode cur=head;
+        ListNode tmp=null;
+        while(cur!=null){
+            tmp=cur.next;
+            cur.next=pre;
+            pre=cur;
+            cur=tmp;
+        }
+        return pre;
+    }
+}
+
+class offer181 {
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
+    public ListNode deleteNode(ListNode head, int val) {
+        ListNode tmp=null;
+        if(head==null)return head;
+        if(head.val==val){ //头结点的情况
+            return head.next;
+
+        }
+        ListNode cur=head.next;
+        ListNode pre=head;
+        while(cur!=null){
+            if(cur.val==val){
+                if(cur.next==null){  //尾结点的情况
+                    pre.next=null;
+                }
+                pre.next=cur.next;
+            }
+            pre=cur;
+            cur=cur.next;
+
+        }
+        return head;
+    }
+}
 //
 public class Main {
 
