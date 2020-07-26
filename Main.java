@@ -80,6 +80,18 @@ class offer042 {
 
 }
 
+class offer05 {
+    public String replaceSpace(String s) {
+        StringBuilder res = new StringBuilder();
+        for(Character c : s.toCharArray())
+        {
+            if(c == ' ') res.append("%20");
+            else res.append(c);
+        }
+        return res.toString();
+    }
+}
+
 
 //先计算出链表的长度，然后直接赋值给数组返回。
 class offer061 {
@@ -154,6 +166,41 @@ class offer071 {
         root.right=recur(pre_root+1+i-in_left,i+1,in_right);
         //这里的右子树的根节点索引:到前序遍历里面去看,
         return root;
+    }
+}
+//
+class offer091 {
+    private Stack<Integer> stack1;
+    private Stack<Integer> stack2;
+    public CQueue() {
+         stack1=new Stack<>();
+         stack2=new Stack<>();
+    }
+
+    public void appendTail(int value) {
+        stack1.push(value);
+    }
+
+    public int deleteHead() {
+        if(!stack2.isEmpty()){
+            return stack2.pop();
+        }else{
+            while(!stack1.isEmpty()){
+                stack2.push(stack1.pop());
+            }
+            return stack2.isEmpty() ? -1 : stack2.pop();
+        }
+    }
+}
+
+class offer111 {
+    public int minArray(int[] numbers) {
+        for(int i=0;i<numbers.length-1;i++){
+            if(numbers[i]<numbers[i+1]){
+                return numbers[i+1];
+            }
+        }
+        return numbers[0];
     }
 }
 //二叉树镜像方法1：用递归的方法
