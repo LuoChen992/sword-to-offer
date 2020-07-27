@@ -192,7 +192,23 @@ class offer091 {
         }
     }
 }
+// dp动态规划
+class offer010-1 {
+    public int fib(int n) {
+        if(n==0)return 0;
+        if(n==1)return 1;
+        if(n==2)return 1;
+        int dp[]=new int[n];
+        dp[0]=0;
+        dp[1]=1;
+        for(int i=2;i<n;i++){
+        dp[i]=dp[i-1]+dp[i-2];
+        dp[i]%=1000000007;
+        }
+        return (dp[n-1]+dp[n-2])%1000000007;
 
+    }
+}
 class offer111 {
     public int minArray(int[] numbers) {
         for(int i=0;i<numbers.length-1;i++){
